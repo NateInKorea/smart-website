@@ -185,10 +185,56 @@
     display: grid;
     grid-template-columns: 190px 1fr;
     gap: 24px;
-    padding: 22px 0;
+    padding: 22px 18px;
+    margin: 0 -18px;
+    border-top: 1px solid var(--line);
+    border-radius: 12px;
+    transition: background 0.15s ease;
+  }
+  .domain-row:hover { background: var(--mint); }
+  .domain-row:last-child { border-bottom: 1px solid var(--line); }
+
+  .stats-band {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 44px 0;
     border-top: 1px solid var(--line);
   }
-  .domain-row:last-child { border-bottom: 1px solid var(--line); }
+  .stat { text-align: left; }
+  .stat .num { font-family: 'Noto Serif KR', serif; font-size: 40px; font-weight: 700; }
+  .stat .lbl { font-size: 13px; color: var(--grey); margin-top: 2px; }
+
+  .sample-card {
+    background: var(--ink);
+    border-radius: 24px;
+    padding: 36px;
+    color: #fff;
+  }
+  .sample-card .eyebrow { font-size: 13px; color: var(--green-light); font-weight: 600; margin-bottom: 10px; }
+  .sample-card .qtext { font-family: 'Noto Serif KR', serif; font-size: 20px; font-weight: 600; line-height: 1.6; margin-bottom: 26px; max-width: 40ch; }
+  .scale-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .scale-btn {
+    flex: 1;
+    min-width: 90px;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.14);
+    border-radius: 14px;
+    padding: 16px 8px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+  }
+  .scale-btn:hover { background: rgba(255,255,255,0.09); }
+  .scale-btn.selected { background: rgba(94,193,138,0.16); border-color: var(--green); transform: translateY(-3px); }
+  .scale-btn .emo { font-size: 24px; display: block; margin-bottom: 8px; }
+  .scale-btn .lbl { font-size: 12px; color: rgba(255,255,255,0.7); }
+  .scale-btn.selected .lbl { color: var(--green-light); font-weight: 600; }
+  .sample-feedback { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 20px; min-height: 20px; }
+
+  .role-example { font-size: 13px; color: var(--grey); font-style: italic; margin-top: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
   .domain-name {
     display: flex;
     align-items: center;
@@ -210,7 +256,9 @@
     background: #fff;
     border: 1px solid var(--line);
     border-top: 4px solid var(--role-color, var(--green));
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
+  .role:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(0,0,0,0.08); }
   .role h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
   .role p { font-size: 14px; color: var(--grey); }
 
@@ -285,6 +333,9 @@
     .features-grid { grid-template-columns: 1fr; gap: 28px; }
     .founder-note { grid-template-columns: 1fr; gap: 12px; }
     .founder-note .mark { font-size: 40px; }
+    .stats-band { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
+    .sample-card { padding: 24px; }
+    .scale-btn { min-width: 70px; padding: 12px 6px; }
   }
 </style>
 </head>
@@ -337,6 +388,15 @@
 </div>
 
 <div class="wrap">
+  <div class="stats-band">
+    <div class="stat"><div class="num" style="color:#5EC18A;">70</div><div class="lbl">문항 / 1회 진단</div></div>
+    <div class="stat"><div class="num" style="color:#F0B93A;">7</div><div class="lbl">연구 기반 영역</div></div>
+    <div class="stat"><div class="num" style="color:#8CEDB2;">4</div><div class="lbl">맞춤 시선</div></div>
+    <div class="stat"><div class="num" style="color:#C38E2A;">25</div><div class="lbl">지원 과목</div></div>
+  </div>
+</div>
+
+<div class="wrap">
   <section class="page-section" id="domains" style="border-top:none;">
     <div class="section-head">
       <h2>하나의 점수가 아닌, 일곱 개의 영역</h2>
@@ -354,6 +414,27 @@
   </section>
 </div>
 
+<div class="wrap">
+  <section class="page-section" style="border-top:none;">
+    <div class="section-head">
+      <h2>직접 한번 풀어보세요</h2>
+      <p>실제 진단에 포함된 문항 중 하나입니다. 실제 진단은 이런 문항 70개로 구성되며, 그 패턴으로 LQ 프로필을 만듭니다.</p>
+    </div>
+    <div class="sample-card">
+      <div class="eyebrow">학습 동기</div>
+      <div class="qtext">정말 어려웠던 것을 배웠을 때 나 자신이 자랑스럽게 느껴진다.</div>
+      <div class="scale-row" id="sampleScale">
+        <div class="scale-btn" data-label="전혀 아니다"><span class="emo">😔</span><span class="lbl">전혀 아니다</span></div>
+        <div class="scale-btn" data-label="별로 아니다"><span class="emo">😕</span><span class="lbl">별로 아니다</span></div>
+        <div class="scale-btn" data-label="가끔 그렇다"><span class="emo">😐</span><span class="lbl">가끔 그렇다</span></div>
+        <div class="scale-btn" data-label="자주 그렇다"><span class="emo">🙂</span><span class="lbl">자주 그렇다</span></div>
+        <div class="scale-btn" data-label="항상 그렇다"><span class="emo">😊</span><span class="lbl">항상 그렇다</span></div>
+      </div>
+      <div class="sample-feedback" id="sampleFeedback"></div>
+    </div>
+  </section>
+</div>
+
 <section class="page-section tint" id="roles">
   <div class="wrap">
     <div class="section-head">
@@ -361,10 +442,10 @@
       <p>SMART LQ는 단순히 숫자만 보여주지 않습니다. 아이 주변의 각 사람에게 무엇을 해야 할지 알려줍니다.</p>
     </div>
     <div class="roles-grid">
-      <div class="role" style="--role-color:#5EC18A;"><h3>학생</h3><p>내가 어떻게 배우는지, 나의 언어로.</p></div>
-      <div class="role" style="--role-color:#F0B93A;"><h3>학부모</h3><p>가정에서 자녀를 도울 구체적인 방법.</p></div>
-      <div class="role" style="--role-color:#8CEDB2;"><h3>교사</h3><p>이 학생을 잘 가르치는 방법.</p></div>
-      <div class="role" style="--role-color:#C38E2A;"><h3>학교</h3><p>이름 없이도 보이는 학급 전체의 패턴.</p></div>
+      <div class="role" style="--role-color:#5EC18A;"><h3>학생</h3><p>내가 어떻게 배우는지, 나의 언어로.</p><p class="role-example">예: "한 번에 하나씩 할 때 가장 집중이 잘 돼요."</p></div>
+      <div class="role" style="--role-color:#F0B93A;"><h3>학부모</h3><p>가정에서 자녀를 도울 구체적인 방법.</p><p class="role-example">예: "한 번에 한 가지 방법만 알려주세요 — 너무 많으면 부담이 됩니다."</p></div>
+      <div class="role" style="--role-color:#8CEDB2;"><h3>교사</h3><p>이 학생을 잘 가르치는 방법.</p><p class="role-example">예: "지적은 학급 전체 앞이 아니라 따로 조용히 해주세요."</p></div>
+      <div class="role" style="--role-color:#C38E2A;"><h3>학교</h3><p>이름 없이도 보이는 학급 전체의 패턴.</p><p class="role-example">예: "24명 중 6명이 끈기 영역에서 낮은 점수 — 이름으로 순위를 매기지 마세요."</p></div>
     </div>
   </div>
 </section>
@@ -428,6 +509,18 @@
     </div>
   </footer>
 </div>
+
+<script>
+  var buttons = document.querySelectorAll('#sampleScale .scale-btn');
+  var feedback = document.getElementById('sampleFeedback');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      buttons.forEach(function (b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      feedback.textContent = '선택: ' + btn.getAttribute('data-label') + '. 실제 진단은 70문항 전체를 거친 후 전체 LQ 프로필을 보여줍니다.';
+    });
+  });
+</script>
 
 </body>
 </html>
