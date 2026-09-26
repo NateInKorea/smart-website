@@ -7,12 +7,14 @@
 <meta name="description" content="SMART LQ는 학생, 학부모, 교사, 학교에게 아이가 어떻게 배우는지 알려주는 이중언어 학습 진단입니다. 7개 연구 기반 영역을 측정합니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #121212;
+    --ink: #0E1210;
     --green: #5EC18A;
-    --yellow: #F9D163;
+    --green-light: #8CEDB2;
+    --gold: #F0B93A;
+    --gold-light: #F9D163;
     --mint: #F0FAF4;
     --amber: #C38E2A;
     --grey: #666666;
@@ -22,7 +24,7 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: #FAFCFA;
+    background: #FFFFFF;
     color: var(--ink);
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.7;
@@ -32,55 +34,73 @@
   a { color: inherit; }
   img, svg { max-width: 100%; }
 
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--green-light); outline-offset: 3px; }
+
+  .hero-outer {
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(94,193,138,0.25), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(240,185,58,0.16), transparent 55%),
+      var(--ink);
+    color: #fff;
+    padding-bottom: 64px;
+  }
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 28px 0;
+    padding: 30px 0;
   }
   .wordmark {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
+  }
+  .wordmark img { height: 52px; width: auto; display: block; }
+  .wordmark-text {
     font-family: 'Noto Serif KR', serif;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 23px;
     letter-spacing: -0.01em;
+    color: #fff;
   }
-  .wordmark img { height: 36px; width: auto; }
-  .wordmark span { color: var(--green); }
+  .wordmark-text .lq { background: linear-gradient(120deg, var(--green-light), var(--gold-light)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  nav { display: flex; align-items: center; }
   nav a {
     text-decoration: none;
-    color: var(--grey);
+    color: rgba(255,255,255,0.7);
     font-size: 14px;
     font-weight: 500;
     margin-left: 28px;
   }
-  nav a:hover { color: var(--ink); }
-  .lang-switch a { color: var(--ink); font-weight: 600; }
+  nav a:hover { color: #fff; }
+  .lang-switch a { color: #fff; font-weight: 600; }
 
   .hero {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.05fr 0.95fr;
     gap: 56px;
     align-items: center;
-    padding: 48px 40px 72px;
-    background: linear-gradient(180deg, var(--mint) 0%, rgba(240,250,244,0) 100%);
-    border-radius: 28px;
-    border-top: none;
+    padding-top: 20px;
   }
   .hero h1 {
     font-size: 38px;
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.4;
     letter-spacing: -0.01em;
     max-width: 15ch;
+    color: #fff;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(110deg, var(--green-light) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
   .hero p.sub {
     font-size: 16px;
-    color: var(--grey);
+    color: rgba(255,255,255,0.68);
     max-width: 42ch;
     margin: 22px 0 32px;
   }
@@ -89,33 +109,47 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--ink);
-    color: #fff;
+    background: linear-gradient(100deg, var(--green), var(--gold));
+    color: #10150F;
     text-decoration: none;
-    padding: 12px 20px;
+    padding: 13px 22px;
     border-radius: 10px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
   }
-  .store-btn:focus-visible, a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--green);
-    outline-offset: 3px;
-  }
-  .store-btn.secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+  .store-btn.secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.28); }
 
-  .lq-card {
-    background: var(--ink);
-    border-radius: 24px;
-    padding: 32px;
-    color: #fff;
+  .phone-frame {
+    width: 300px;
+    margin: 0 auto;
+    background: #050705;
+    border-radius: 44px;
+    padding: 16px;
+    box-shadow: 0 50px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);
   }
-  .lq-card .label { font-size: 13px; color: #8CEDB2; font-weight: 600; letter-spacing: 0.01em; }
-  .lq-card .score { font-family: 'Noto Serif KR', serif; font-size: 72px; font-weight: 700; color: var(--yellow); margin: 6px 0 4px; }
+  .phone-notch {
+    width: 90px;
+    height: 22px;
+    background: #050705;
+    border-radius: 12px;
+    margin: 0 auto 10px;
+  }
+  .phone-screen {
+    background: var(--ink);
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 24px 20px;
+  }
+  .lq-card {
+    padding: 0;
+  }
+  .lq-card .label { font-size: 13px; color: var(--green-light); font-weight: 600; letter-spacing: 0.01em; }
+  .lq-card .score { font-family: 'Noto Serif KR', serif; font-size: 72px; font-weight: 700; background: linear-gradient(100deg, var(--gold-light), var(--green-light)); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 6px 0 4px; }
   .lq-card .badge {
     display: inline-block;
     border: 1.5px solid var(--green);
-    color: var(--green);
-    background: rgba(94,193,138,0.12);
+    color: var(--green-light);
+    background: rgba(94,193,138,0.14);
     border-radius: 20px;
     padding: 5px 14px;
     font-size: 12px;
@@ -123,150 +157,182 @@
     margin-bottom: 24px;
   }
   .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .bar-row .dl { font-size: 11px; color: #9A9A9A; width: 100px; flex-shrink: 0; }
-  .bar-bg { flex: 1; height: 7px; background: #303030; border-radius: 4px; overflow: hidden; }
+  .bar-row .dl { font-size: 11px; color: rgba(255,255,255,0.55); width: 100px; flex-shrink: 0; }
+  .bar-bg { flex: 1; height: 7px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 4px; }
-  .bar-row .pct { font-size: 11px; font-weight: 700; width: 32px; text-align: right; }
+  .bar-row .pct { font-size: 11px; font-weight: 700; width: 32px; text-align: right; color: rgba(255,255,255,0.85); }
 
-  section { padding: 72px 0; border-top: 1px solid var(--line); }
-  .section-head { max-width: 34ch; margin-bottom: 40px; }
+  section.page-section { padding: 76px 0; border-top: 1px solid var(--line); }
+  section.page-section.tint { background: var(--mint); border-top: none; }
+  .section-head { max-width: 36ch; margin-bottom: 40px; }
   .section-head h2 { font-size: 27px; font-weight: 600; letter-spacing: -0.01em; }
   .section-head p { color: var(--grey); font-size: 16px; margin-top: 12px; }
 
   .domain-list { display: flex; flex-direction: column; }
   .domain-row {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 190px 1fr;
     gap: 24px;
-    padding: 20px 0;
+    padding: 22px 0;
     border-top: 1px solid var(--line);
   }
   .domain-row:last-child { border-bottom: 1px solid var(--line); }
   .domain-name {
-    border-left: 3px solid var(--dot, var(--green));
-    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-weight: 600;
     font-size: 16px;
   }
+  .domain-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--dot, var(--green)); flex-shrink: 0; }
   .domain-desc { color: var(--grey); font-size: 15px; max-width: 62ch; }
 
   .roles-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    gap: 20px;
   }
   .role {
-    padding: 24px 20px 24px 0;
-    border-left: 1px solid var(--line);
+    padding: 26px 22px;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--role-color, var(--green));
   }
-  .role:first-child { border-left: none; padding-left: 0; }
-  .role:not(:first-child) { padding-left: 24px; }
   .role h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
   .role p { font-size: 14px; color: var(--grey); }
 
   .steps { display: flex; flex-direction: column; gap: 0; }
-  .step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid var(--line); }
+  .step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
   .step:last-child { border-bottom: 1px solid var(--line); }
-  .step .num { font-family: 'Noto Serif KR', serif; font-size: 26px; font-weight: 600; color: var(--green); }
+  .step .num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 700;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, var(--green), var(--gold));
+    color: #10150F;
+    display: flex; align-items: center; justify-content: center;
+  }
   .step h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
   .step p { color: var(--grey); font-size: 15px; max-width: 60ch; }
 
-  .final-cta { text-align: left; }
-  .final-cta h2 { font-size: 28px; font-weight: 600; max-width: 18ch; margin-bottom: 20px; }
+  .final-cta-outer { background: var(--ink); color: #fff; }
+  .final-cta { text-align: left; padding: 80px 0; }
+  .final-cta h2 { font-size: 28px; font-weight: 600; max-width: 18ch; margin-bottom: 24px; color: #fff; }
+  .final-cta h2 .accent { background: linear-gradient(110deg, var(--green-light), var(--gold-light)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
   footer {
-    border-top: 1px solid var(--line);
-    padding: 32px 0 48px;
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 28px 0 40px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
     font-size: 13px;
-    color: var(--grey);
+    border-top: 1px solid rgba(255,255,255,0.1);
   }
-  footer a { text-decoration: none; color: var(--grey); margin-right: 20px; }
-  footer a:hover { color: var(--ink); }
+  footer a { text-decoration: none; color: rgba(255,255,255,0.6); margin-right: 20px; }
+  footer a:hover { color: #fff; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
 
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; gap: 40px; padding: 32px 24px 48px; }
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 8px; }
     .hero h1 { font-size: 30px; max-width: none; }
-    .roles-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .role { border-left: none !important; padding: 0 !important; }
+    .roles-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
     .domain-row { grid-template-columns: 1fr; gap: 8px; }
     nav a { margin-left: 16px; font-size: 13px; }
+    .wordmark img { height: 40px; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <div class="wordmark"><img src="logo-icon.png" alt="SMART LQ">SMART <span>LQ</span></div>
-    <nav>
-      <a href="#domains">영역</a>
-      <a href="#roles">이용 대상</a>
-      <a href="#how">이용 방법</a>
-      <span class="lang-switch"><a href="index.html">English</a></span>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div>
-      <h1>점수가 아니라, 우리 아이가 어떻게 배우는지 알아보세요.</h1>
-      <p class="sub">SMART LQ는 만 7세 이상을 위한 이중언어 학습 진단입니다. 70문항 진단 하나로 7개 연구 기반 영역에 걸친 학습지수(LQ)를 산출하며, 학생·학부모·교사·학교마다 서로 다른 맞춤 안내를 제공합니다.</p>
-      <div class="cta-row">
-        <a class="store-btn" href="#" aria-label="App Store에서 다운로드">App Store에서 다운로드</a>
-        <a class="store-btn secondary" href="#" aria-label="Google Play에서 다운로드">Google Play에서 다운로드</a>
+<div class="hero-outer">
+  <div class="wrap">
+    <header>
+      <div class="wordmark">
+        <img src="logo-icon.png" alt="SMART LQ">
+        <div class="wordmark-text">SMART <span class="lq">LQ</span></div>
       </div>
-    </div>
-    <div class="lq-card">
-      <div class="label">나의 LQ 점수</div>
-      <div class="score">685</div>
-      <div class="badge">강함</div>
-      <div class="bar-row"><span class="dl">메타인지</span><div class="bar-bg"><div class="bar-fill" style="width:82%;background:#5EC18A;"></div></div><span class="pct">82%</span></div>
-      <div class="bar-row"><span class="dl">학습 동기</span><div class="bar-bg"><div class="bar-fill" style="width:65%;background:#F9D163;"></div></div><span class="pct">65%</span></div>
-      <div class="bar-row"><span class="dl">정보 처리</span><div class="bar-bg"><div class="bar-fill" style="width:74%;background:#8CEDB2;"></div></div><span class="pct">74%</span></div>
-      <div class="bar-row"><span class="dl">피드백 수용</span><div class="bar-bg"><div class="bar-fill" style="width:58%;background:#C38E2A;"></div></div><span class="pct">58%</span></div>
-      <div class="bar-row"><span class="dl">학습 환경</span><div class="bar-bg"><div class="bar-fill" style="width:90%;background:#5EC18A;"></div></div><span class="pct">90%</span></div>
-      <div class="bar-row"><span class="dl">끈기</span><div class="bar-bg"><div class="bar-fill" style="width:71%;background:#F9D163;"></div></div><span class="pct">71%</span></div>
-      <div class="bar-row"><span class="dl">언어 학습</span><div class="bar-bg"><div class="bar-fill" style="width:60%;background:#8CEDB2;"></div></div><span class="pct">60%</span></div>
-    </div>
-  </section>
+      <nav>
+        <a href="#domains">영역</a>
+        <a href="#roles">이용 대상</a>
+        <a href="#how">이용 방법</a>
+        <span class="lang-switch"><a href="index.html">English</a></span>
+      </nav>
+    </header>
 
-  <section id="domains">
+    <section class="hero">
+      <div>
+        <h1>점수가 아니라, 우리 아이가 어떻게 <span class="accent">배우는지</span> 알아보세요.</h1>
+        <p class="sub">SMART LQ는 만 7세 이상을 위한 이중언어 학습 진단입니다. 70문항 진단 하나로 7개 연구 기반 영역에 걸친 학습지수(LQ)를 산출하며, 학생·학부모·교사·학교마다 서로 다른 맞춤 안내를 제공합니다.</p>
+        <div class="cta-row">
+          <a class="store-btn" href="#" aria-label="App Store에서 다운로드">App Store에서 다운로드</a>
+          <a class="store-btn secondary" href="#" aria-label="Google Play에서 다운로드">Google Play에서 다운로드</a>
+        </div>
+      </div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="lq-card">
+            <div class="label">나의 LQ 점수</div>
+            <div class="score">685</div>
+            <div class="badge">강함</div>
+            <div class="bar-row"><span class="dl">메타인지</span><div class="bar-bg"><div class="bar-fill" style="width:82%;background:linear-gradient(90deg,#5EC18A,#8CEDB2);"></div></div><span class="pct">82%</span></div>
+            <div class="bar-row"><span class="dl">학습 동기</span><div class="bar-bg"><div class="bar-fill" style="width:65%;background:linear-gradient(90deg,#F0B93A,#F9D163);"></div></div><span class="pct">65%</span></div>
+            <div class="bar-row"><span class="dl">정보 처리</span><div class="bar-bg"><div class="bar-fill" style="width:74%;background:linear-gradient(90deg,#5EC18A,#8CEDB2);"></div></div><span class="pct">74%</span></div>
+            <div class="bar-row"><span class="dl">피드백 수용</span><div class="bar-bg"><div class="bar-fill" style="width:58%;background:#C38E2A;"></div></div><span class="pct">58%</span></div>
+            <div class="bar-row"><span class="dl">학습 환경</span><div class="bar-bg"><div class="bar-fill" style="width:90%;background:linear-gradient(90deg,#5EC18A,#8CEDB2);"></div></div><span class="pct">90%</span></div>
+            <div class="bar-row"><span class="dl">끈기</span><div class="bar-bg"><div class="bar-fill" style="width:71%;background:linear-gradient(90deg,#F0B93A,#F9D163);"></div></div><span class="pct">71%</span></div>
+            <div class="bar-row"><span class="dl">언어 학습</span><div class="bar-bg"><div class="bar-fill" style="width:60%;background:linear-gradient(90deg,#5EC18A,#8CEDB2);"></div></div><span class="pct">60%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="page-section" id="domains" style="border-top:none;">
     <div class="section-head">
       <h2>하나의 점수가 아닌, 일곱 개의 영역</h2>
       <p>모든 SMART LQ 진단은 같은 7개 학습 영역을 측정합니다. 점수는 끝이 아니라 시작점입니다.</p>
     </div>
     <div class="domain-list">
-      <div class="domain-row"><div class="domain-name" style="--dot:#5EC18A;">메타인지 인식</div><div class="domain-desc">계획을 세우고, 스스로 이해했는지 점검하며, 실수를 그냥 넘기지 않고 돌아보는지를 봅니다.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#F9D163;">학습 동기</div><div class="domain-desc">호기심, 성장, 보상, 인정 중 무엇이 실제로 아이를 움직이게 하는지를 봅니다.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#8CEDB2;">정보 처리 방식</div><div class="domain-desc">이미지, 듣기, 직접 해보기, 정독 중 새로운 내용을 가장 잘 받아들이는 방식을 봅니다.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#C38E2A;">피드백 수용</div><div class="domain-desc">지적을 성장의 재료로 받아들이는지, 아니면 방어부터 하게 되는지를 봅니다.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#5EC18A;">학습 환경 선호</div><div class="domain-desc">조용함과 소음, 규칙과 유연함, 혼자와 함께 중 실제로 집중에 필요한 조건을 봅니다.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#F9D163;">끈기와 성장 믿음</div><div class="domain-desc">어려움을 다른 방법을 시도할 신호로 보는지, 멈출 신호로 보는지를 봅니다.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#8CEDB2;">언어 학습 방식</div><div class="domain-desc">위험을 감수하고, 패턴을 스스로 알아차리며, 실제 의사소통을 만들어가는 태도를 봅니다.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#5EC18A;"></span>메타인지 인식</div><div class="domain-desc">계획을 세우고, 스스로 이해했는지 점검하며, 실수를 그냥 넘기지 않고 돌아보는지를 봅니다.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#F0B93A;"></span>학습 동기</div><div class="domain-desc">호기심, 성장, 보상, 인정 중 무엇이 실제로 아이를 움직이게 하는지를 봅니다.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#8CEDB2;"></span>정보 처리 방식</div><div class="domain-desc">이미지, 듣기, 직접 해보기, 정독 중 새로운 내용을 가장 잘 받아들이는 방식을 봅니다.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#C38E2A;"></span>피드백 수용</div><div class="domain-desc">지적을 성장의 재료로 받아들이는지, 아니면 방어부터 하게 되는지를 봅니다.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#5EC18A;"></span>학습 환경 선호</div><div class="domain-desc">조용함과 소음, 규칙과 유연함, 혼자와 함께 중 실제로 집중에 필요한 조건을 봅니다.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#F9D163;"></span>끈기와 성장 믿음</div><div class="domain-desc">어려움을 다른 방법을 시도할 신호로 보는지, 멈출 신호로 보는지를 봅니다.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#8CEDB2;"></span>언어 학습 방식</div><div class="domain-desc">위험을 감수하고, 패턴을 스스로 알아차리며, 실제 의사소통을 만들어가는 태도를 봅니다.</div></div>
     </div>
   </section>
+</div>
 
-  <section id="roles">
+<section class="page-section tint" id="roles">
+  <div class="wrap">
     <div class="section-head">
       <h2>같은 점수, 네 가지 다른 시선</h2>
       <p>SMART LQ는 단순히 숫자만 보여주지 않습니다. 아이 주변의 각 사람에게 무엇을 해야 할지 알려줍니다.</p>
     </div>
     <div class="roles-grid">
-      <div class="role"><h3>학생</h3><p>내가 어떻게 배우는지, 나의 언어로.</p></div>
-      <div class="role"><h3>학부모</h3><p>가정에서 자녀를 도울 구체적인 방법.</p></div>
-      <div class="role"><h3>교사</h3><p>이 학생을 잘 가르치는 방법.</p></div>
-      <div class="role"><h3>학교</h3><p>이름 없이도 보이는 학급 전체의 패턴.</p></div>
+      <div class="role" style="--role-color:#5EC18A;"><h3>학생</h3><p>내가 어떻게 배우는지, 나의 언어로.</p></div>
+      <div class="role" style="--role-color:#F0B93A;"><h3>학부모</h3><p>가정에서 자녀를 도울 구체적인 방법.</p></div>
+      <div class="role" style="--role-color:#8CEDB2;"><h3>교사</h3><p>이 학생을 잘 가르치는 방법.</p></div>
+      <div class="role" style="--role-color:#C38E2A;"><h3>학교</h3><p>이름 없이도 보이는 학급 전체의 패턴.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="how">
+<div class="wrap">
+  <section class="page-section" id="how">
     <div class="section-head">
       <h2>이용 방법</h2>
     </div>
@@ -276,21 +342,26 @@
       <div class="step"><div class="num">3</div><div><h3>맞춤 안내 받기</h3><p>같은 결과를 바탕으로 학부모, 교사, 학교 각자에게 맞는 안내를 제공합니다.</p></div></div>
     </div>
   </section>
+</div>
 
-  <section class="final-cta">
-    <h2>우리 아이가 실제로 어떻게 배우는지 확인해보세요.</h2>
-    <div class="cta-row">
-      <a class="store-btn" href="#" aria-label="App Store에서 다운로드">App Store에서 다운로드</a>
-      <a class="store-btn secondary" href="#" aria-label="Google Play에서 다운로드">Google Play에서 다운로드</a>
+<div class="final-cta-outer">
+  <div class="wrap">
+    <div class="final-cta">
+      <h2>우리 아이가 실제로 어떻게 <span class="accent">배우는지</span> 확인해보세요.</h2>
+      <div class="cta-row">
+        <a class="store-btn" href="#" aria-label="App Store에서 다운로드">App Store에서 다운로드</a>
+        <a class="store-btn secondary" href="#" aria-label="Google Play에서 다운로드">Google Play에서 다운로드</a>
+      </div>
     </div>
-  </section>
-
+  </div>
   <footer>
-    <div>
-      <a href="mailto:smartlqapp@gmail.com">smartlqapp@gmail.com</a>
-      <a href="https://sites.google.com/view/smartlqprivacypolicy" target="_blank" rel="noopener">개인정보처리방침</a>
+    <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; width:100%;">
+      <div>
+        <a href="mailto:smartlqapp@gmail.com">smartlqapp@gmail.com</a>
+        <a href="https://sites.google.com/view/smartlqprivacypolicy" target="_blank" rel="noopener">개인정보처리방침</a>
+      </div>
+      <div>© 2026 바이탈 VITAL</div>
     </div>
-    <div>© 2026 바이탈 VITAL</div>
   </footer>
 </div>
 

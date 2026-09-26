@@ -7,12 +7,14 @@
 <meta name="description" content="SMART LQ is a bilingual learning assessment that shows students, parents, teachers, and schools how a child learns best — across 7 research-based domains.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #121212;
+    --ink: #0E1210;
     --green: #5EC18A;
-    --yellow: #F9D163;
+    --green-light: #8CEDB2;
+    --gold: #F0B93A;
+    --gold-light: #F9D163;
     --mint: #F0FAF4;
     --amber: #C38E2A;
     --grey: #666666;
@@ -22,7 +24,7 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: #FAFCFA;
+    background: #FFFFFF;
     color: var(--ink);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -32,57 +34,74 @@
   a { color: inherit; }
   img, svg { max-width: 100%; }
 
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 
-  /* Header */
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--green-light); outline-offset: 3px; }
+
+  /* Hero — full bleed dark */
+  .hero-outer {
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(94,193,138,0.25), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(240,185,58,0.16), transparent 55%),
+      var(--ink);
+    color: #fff;
+    padding-bottom: 64px;
+  }
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 28px 0;
+    padding: 30px 0;
   }
   .wordmark {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
+  }
+  .wordmark img { height: 52px; width: auto; display: block; }
+  .wordmark-text {
     font-family: 'Fraunces', serif;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 23px;
     letter-spacing: -0.01em;
+    color: #fff;
   }
-  .wordmark img { height: 36px; width: auto; }
-  .wordmark span { color: var(--green); }
+  .wordmark-text .lq { background: linear-gradient(120deg, var(--green-light), var(--gold-light)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  nav { display: flex; align-items: center; }
   nav a {
     text-decoration: none;
-    color: var(--grey);
+    color: rgba(255,255,255,0.7);
     font-size: 14px;
     font-weight: 500;
     margin-left: 28px;
   }
-  nav a:hover { color: var(--ink); }
-  .lang-switch a { color: var(--ink); font-weight: 600; }
+  nav a:hover { color: #fff; }
+  .lang-switch a { color: #fff; font-weight: 600; }
 
-  /* Hero */
   .hero {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.05fr 0.95fr;
     gap: 56px;
     align-items: center;
-    padding: 48px 40px 72px;
-    background: linear-gradient(180deg, var(--mint) 0%, rgba(240,250,244,0) 100%);
-    border-radius: 28px;
-    border-top: none;
+    padding-top: 20px;
   }
   .hero h1 {
-    font-size: 44px;
+    font-size: 46px;
     font-weight: 600;
-    line-height: 1.18;
+    line-height: 1.16;
     letter-spacing: -0.015em;
-    max-width: 15ch;
+    max-width: 14.5ch;
+    color: #fff;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(110deg, var(--green-light) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
   .hero p.sub {
     font-size: 17px;
-    color: var(--grey);
+    color: rgba(255,255,255,0.68);
     max-width: 46ch;
     margin: 22px 0 32px;
   }
@@ -91,34 +110,48 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--ink);
-    color: #fff;
+    background: linear-gradient(100deg, var(--green), var(--gold));
+    color: #10150F;
     text-decoration: none;
-    padding: 12px 20px;
+    padding: 13px 22px;
     border-radius: 10px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
   }
-  .store-btn:focus-visible, a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--green);
-    outline-offset: 3px;
-  }
-  .store-btn.secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+  .store-btn.secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.28); }
 
-  /* LQ score card mockup */
-  .lq-card {
-    background: var(--ink);
-    border-radius: 24px;
-    padding: 32px;
-    color: #fff;
+  /* Phone frame wrapping the LQ score card */
+  .phone-frame {
+    width: 300px;
+    margin: 0 auto;
+    background: #050705;
+    border-radius: 44px;
+    padding: 16px;
+    box-shadow: 0 50px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);
   }
-  .lq-card .label { font-size: 13px; color: #8CEDB2; font-weight: 600; letter-spacing: 0.01em; }
-  .lq-card .score { font-family: 'Fraunces', serif; font-size: 72px; font-weight: 700; color: var(--yellow); margin: 6px 0 4px; }
+  .phone-notch {
+    width: 90px;
+    height: 22px;
+    background: #050705;
+    border-radius: 12px;
+    margin: 0 auto 10px;
+  }
+  .phone-screen {
+    background: var(--ink);
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 24px 20px;
+  }
+  .lq-card {
+    padding: 0;
+  }
+  .lq-card .label { font-size: 13px; color: var(--green-light); font-weight: 600; letter-spacing: 0.01em; }
+  .lq-card .score { font-family: 'Fraunces', serif; font-size: 72px; font-weight: 700; background: linear-gradient(100deg, var(--gold-light), var(--green-light)); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 6px 0 4px; }
   .lq-card .badge {
     display: inline-block;
     border: 1.5px solid var(--green);
-    color: var(--green);
-    background: rgba(94,193,138,0.12);
+    color: var(--green-light);
+    background: rgba(94,193,138,0.14);
     border-radius: 20px;
     padding: 5px 14px;
     font-size: 12px;
@@ -126,13 +159,14 @@
     margin-bottom: 24px;
   }
   .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .bar-row .dl { font-size: 11px; color: #9A9A9A; width: 118px; flex-shrink: 0; }
-  .bar-bg { flex: 1; height: 7px; background: #303030; border-radius: 4px; overflow: hidden; }
+  .bar-row .dl { font-size: 11px; color: rgba(255,255,255,0.55); width: 118px; flex-shrink: 0; }
+  .bar-bg { flex: 1; height: 7px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 4px; }
-  .bar-row .pct { font-size: 11px; font-weight: 700; width: 32px; text-align: right; }
+  .bar-row .pct { font-size: 11px; font-weight: 700; width: 32px; text-align: right; color: rgba(255,255,255,0.85); }
 
-  /* Domains section */
-  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  /* Body sections */
+  section.page-section { padding: 76px 0; border-top: 1px solid var(--line); }
+  section.page-section.tint { background: var(--mint); border-top: none; }
   .section-head { max-width: 56ch; margin-bottom: 40px; }
   .section-head h2 { font-size: 30px; font-weight: 600; letter-spacing: -0.01em; }
   .section-head p { color: var(--grey); font-size: 16px; margin-top: 12px; }
@@ -140,140 +174,171 @@
   .domain-list { display: flex; flex-direction: column; }
   .domain-row {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 230px 1fr;
     gap: 24px;
-    padding: 20px 0;
+    padding: 22px 0;
     border-top: 1px solid var(--line);
   }
   .domain-row:last-child { border-bottom: 1px solid var(--line); }
   .domain-name {
-    border-left: 3px solid var(--dot, var(--green));
-    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-weight: 600;
     font-size: 16px;
   }
+  .domain-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--dot, var(--green)); flex-shrink: 0; }
   .domain-desc { color: var(--grey); font-size: 15px; max-width: 62ch; }
 
   /* Roles */
   .roles-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    gap: 20px;
   }
   .role {
-    padding: 24px 20px 24px 0;
-    border-left: 1px solid var(--line);
+    padding: 26px 22px;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--role-color, var(--green));
   }
-  .role:first-child { border-left: none; padding-left: 0; }
-  .role:not(:first-child) { padding-left: 24px; }
   .role h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
   .role p { font-size: 14px; color: var(--grey); }
 
   /* How it works */
   .steps { display: flex; flex-direction: column; gap: 0; }
-  .step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid var(--line); }
+  .step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
   .step:last-child { border-bottom: 1px solid var(--line); }
-  .step .num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; color: var(--green); }
+  .step .num {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, var(--green), var(--gold));
+    color: #10150F;
+    display: flex; align-items: center; justify-content: center;
+  }
   .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
   .step p { color: var(--grey); font-size: 15px; max-width: 60ch; }
 
   /* Final CTA */
-  .final-cta { text-align: left; }
-  .final-cta h2 { font-size: 32px; font-weight: 600; max-width: 18ch; margin-bottom: 20px; }
+  .final-cta-outer { background: var(--ink); color: #fff; }
+  .final-cta { text-align: left; padding: 80px 0; }
+  .final-cta h2 { font-size: 34px; font-weight: 600; max-width: 18ch; margin-bottom: 24px; color: #fff; }
+  .final-cta h2 .accent { background: linear-gradient(110deg, var(--green-light), var(--gold-light)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
   footer {
-    border-top: 1px solid var(--line);
-    padding: 32px 0 48px;
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 28px 0 40px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
     font-size: 13px;
-    color: var(--grey);
+    border-top: 1px solid rgba(255,255,255,0.1);
   }
-  footer a { text-decoration: none; color: var(--grey); margin-right: 20px; }
-  footer a:hover { color: var(--ink); }
+  footer a { text-decoration: none; color: rgba(255,255,255,0.6); margin-right: 20px; }
+  footer a:hover { color: #fff; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
 
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; gap: 40px; padding: 32px 24px 48px; }
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 8px; }
     .hero h1 { font-size: 34px; max-width: none; }
-    .roles-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .role { border-left: none !important; padding: 0 !important; }
+    .roles-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
     .domain-row { grid-template-columns: 1fr; gap: 8px; }
     nav a { margin-left: 16px; font-size: 13px; }
+    .wordmark img { height: 40px; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <div class="wordmark"><img src="logo-icon.png" alt="SMART LQ">SMART <span>LQ</span></div>
-    <nav>
-      <a href="#domains">Domains</a>
-      <a href="#roles">Who it's for</a>
-      <a href="#how">How it works</a>
-      <span class="lang-switch"><a href="ko.html">한국어</a></span>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div>
-      <h1>Understand how your child learns — not just what they scored.</h1>
-      <p class="sub">SMART LQ is a bilingual learning assessment for ages 7 and up. One 70-question assessment produces a Learning Quotient score across 7 research-based domains, with different guidance for the student, their parent, their teacher, and their school.</p>
-      <div class="cta-row">
-        <a class="store-btn" href="#" aria-label="Download on the App Store">Download on the App Store</a>
-        <a class="store-btn secondary" href="#" aria-label="Get it on Google Play">Get it on Google Play</a>
+<div class="hero-outer">
+  <div class="wrap">
+    <header>
+      <div class="wordmark">
+        <img src="logo-icon.png" alt="SMART LQ">
+        <div class="wordmark-text">SMART <span class="lq">LQ</span></div>
       </div>
-    </div>
-    <div class="lq-card">
-      <div class="label">My LQ Score</div>
-      <div class="score">685</div>
-      <div class="badge">Strong</div>
-      <div class="bar-row"><span class="dl">Metacognitive</span><div class="bar-bg"><div class="bar-fill" style="width:82%;background:#5EC18A;"></div></div><span class="pct">82%</span></div>
-      <div class="bar-row"><span class="dl">Motivation</span><div class="bar-bg"><div class="bar-fill" style="width:65%;background:#F9D163;"></div></div><span class="pct">65%</span></div>
-      <div class="bar-row"><span class="dl">Processing</span><div class="bar-bg"><div class="bar-fill" style="width:74%;background:#8CEDB2;"></div></div><span class="pct">74%</span></div>
-      <div class="bar-row"><span class="dl">Feedback</span><div class="bar-bg"><div class="bar-fill" style="width:58%;background:#C38E2A;"></div></div><span class="pct">58%</span></div>
-      <div class="bar-row"><span class="dl">Environment</span><div class="bar-bg"><div class="bar-fill" style="width:90%;background:#5EC18A;"></div></div><span class="pct">90%</span></div>
-      <div class="bar-row"><span class="dl">Persistence</span><div class="bar-bg"><div class="bar-fill" style="width:71%;background:#F9D163;"></div></div><span class="pct">71%</span></div>
-      <div class="bar-row"><span class="dl">Language</span><div class="bar-bg"><div class="bar-fill" style="width:60%;background:#8CEDB2;"></div></div><span class="pct">60%</span></div>
-    </div>
-  </section>
+      <nav>
+        <a href="#domains">Domains</a>
+        <a href="#roles">Who it's for</a>
+        <a href="#how">How it works</a>
+        <span class="lang-switch"><a href="ko.html">한국어</a></span>
+      </nav>
+    </header>
 
-  <section id="domains">
+    <section class="hero">
+      <div>
+        <h1>Understand how your child <span class="accent">learns</span> — not just what they scored.</h1>
+        <p class="sub">SMART LQ is a bilingual learning assessment for ages 7 and up. One 70-question assessment produces a Learning Quotient score across 7 research-based domains, with different guidance for the student, their parent, their teacher, and their school.</p>
+        <div class="cta-row">
+          <a class="store-btn" href="#" aria-label="Download on the App Store">Download on the App Store</a>
+          <a class="store-btn secondary" href="#" aria-label="Get it on Google Play">Get it on Google Play</a>
+        </div>
+      </div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="lq-card">
+            <div class="label">My LQ Score</div>
+            <div class="score">685</div>
+            <div class="badge">Strong</div>
+            <div class="bar-row"><span class="dl">Metacognitive</span><div class="bar-bg"><div class="bar-fill" style="width:82%;background:linear-gradient(90deg,#5EC18A,#8CEDB2);"></div></div><span class="pct">82%</span></div>
+            <div class="bar-row"><span class="dl">Motivation</span><div class="bar-bg"><div class="bar-fill" style="width:65%;background:linear-gradient(90deg,#F0B93A,#F9D163);"></div></div><span class="pct">65%</span></div>
+            <div class="bar-row"><span class="dl">Processing</span><div class="bar-bg"><div class="bar-fill" style="width:74%;background:linear-gradient(90deg,#5EC18A,#8CEDB2);"></div></div><span class="pct">74%</span></div>
+            <div class="bar-row"><span class="dl">Feedback</span><div class="bar-bg"><div class="bar-fill" style="width:58%;background:#C38E2A;"></div></div><span class="pct">58%</span></div>
+            <div class="bar-row"><span class="dl">Environment</span><div class="bar-bg"><div class="bar-fill" style="width:90%;background:linear-gradient(90deg,#5EC18A,#8CEDB2);"></div></div><span class="pct">90%</span></div>
+            <div class="bar-row"><span class="dl">Persistence</span><div class="bar-bg"><div class="bar-fill" style="width:71%;background:linear-gradient(90deg,#F0B93A,#F9D163);"></div></div><span class="pct">71%</span></div>
+            <div class="bar-row"><span class="dl">Language</span><div class="bar-bg"><div class="bar-fill" style="width:60%;background:linear-gradient(90deg,#5EC18A,#8CEDB2);"></div></div><span class="pct">60%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="page-section" id="domains" style="border-top:none;">
     <div class="section-head">
       <h2>Seven domains, not one score</h2>
       <p>Every SMART LQ assessment measures the same seven areas of how a person learns — the score is a starting point, not the whole picture.</p>
     </div>
     <div class="domain-list">
-      <div class="domain-row"><div class="domain-name" style="--dot:#5EC18A;">Metacognitive Awareness</div><div class="domain-desc">Whether a student plans ahead, checks their own understanding, and reflects on mistakes rather than just moving past them.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#F9D163;">Motivation Orientation</div><div class="domain-desc">What actually drives a student to keep going — curiosity, personal growth, rewards, or recognition from others.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#8CEDB2;">Processing Preference</div><div class="domain-desc">How a student takes in new material best — through images, hearing it explained, hands-on trial, or careful reading.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#C38E2A;">Feedback Responsiveness</div><div class="domain-desc">How a student reacts to correction — as fuel for improvement, or as something to brace against.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#5EC18A;">Learning Environment Needs</div><div class="domain-desc">The conditions a student actually needs to concentrate — quiet versus noise, routine versus flexibility, alone versus with others.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#F9D163;">Persistence Beliefs</div><div class="domain-desc">Whether a student treats difficulty as a sign to try a different approach, or a sign to stop.</div></div>
-      <div class="domain-row"><div class="domain-name" style="--dot:#8CEDB2;">Language Learning Style</div><div class="domain-desc">How comfortably a student takes risks, notices patterns, and builds real communication in a second language.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#5EC18A;"></span>Metacognitive Awareness</div><div class="domain-desc">Whether a student plans ahead, checks their own understanding, and reflects on mistakes rather than just moving past them.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#F0B93A;"></span>Motivation Orientation</div><div class="domain-desc">What actually drives a student to keep going — curiosity, personal growth, rewards, or recognition from others.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#8CEDB2;"></span>Processing Preference</div><div class="domain-desc">How a student takes in new material best — through images, hearing it explained, hands-on trial, or careful reading.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#C38E2A;"></span>Feedback Responsiveness</div><div class="domain-desc">How a student reacts to correction — as fuel for improvement, or as something to brace against.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#5EC18A;"></span>Learning Environment Needs</div><div class="domain-desc">The conditions a student actually needs to concentrate — quiet versus noise, routine versus flexibility, alone versus with others.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#F9D163;"></span>Persistence Beliefs</div><div class="domain-desc">Whether a student treats difficulty as a sign to try a different approach, or a sign to stop.</div></div>
+      <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#8CEDB2;"></span>Language Learning Style</div><div class="domain-desc">How comfortably a student takes risks, notices patterns, and builds real communication in a second language.</div></div>
     </div>
   </section>
+</div>
 
-  <section id="roles">
+<section class="page-section tint" id="roles">
+  <div class="wrap">
     <div class="section-head">
       <h2>The same score, four different views</h2>
       <p>SMART LQ doesn't just report a number — it tells each person in a student's life what to actually do with it.</p>
     </div>
     <div class="roles-grid">
-      <div class="role"><h3>Student</h3><p>How you learn best, explained in your own terms.</p></div>
-      <div class="role"><h3>Parent</h3><p>Specific ways to help your child at home.</p></div>
-      <div class="role"><h3>Teacher</h3><p>How to teach this particular student well.</p></div>
-      <div class="role"><h3>School</h3><p>Patterns across a class, without naming names.</p></div>
+      <div class="role" style="--role-color:#5EC18A;"><h3>Student</h3><p>How you learn best, explained in your own terms.</p></div>
+      <div class="role" style="--role-color:#F0B93A;"><h3>Parent</h3><p>Specific ways to help your child at home.</p></div>
+      <div class="role" style="--role-color:#8CEDB2;"><h3>Teacher</h3><p>How to teach this particular student well.</p></div>
+      <div class="role" style="--role-color:#C38E2A;"><h3>School</h3><p>Patterns across a class, without naming names.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="how">
+<div class="wrap">
+  <section class="page-section" id="how">
     <div class="section-head">
       <h2>How it works</h2>
     </div>
@@ -283,21 +348,26 @@
       <div class="step"><div class="num">3</div><div><h3>See what to do with it</h3><p>Parents, teachers, and schools each get their own tailored guidance, built from the same underlying result.</p></div></div>
     </div>
   </section>
+</div>
 
-  <section class="final-cta">
-    <h2>See how your student actually learns.</h2>
-    <div class="cta-row">
-      <a class="store-btn" href="#" aria-label="Download on the App Store">Download on the App Store</a>
-      <a class="store-btn secondary" href="#" aria-label="Get it on Google Play">Get it on Google Play</a>
+<div class="final-cta-outer">
+  <div class="wrap">
+    <div class="final-cta">
+      <h2>See how your student actually <span class="accent">learns</span>.</h2>
+      <div class="cta-row">
+        <a class="store-btn" href="#" aria-label="Download on the App Store">Download on the App Store</a>
+        <a class="store-btn secondary" href="#" aria-label="Get it on Google Play">Get it on Google Play</a>
+      </div>
     </div>
-  </section>
-
+  </div>
   <footer>
-    <div>
-      <a href="mailto:smartlqapp@gmail.com">smartlqapp@gmail.com</a>
-      <a href="https://sites.google.com/view/smartlqprivacypolicy" target="_blank" rel="noopener">Privacy Policy</a>
+    <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; width:100%;">
+      <div>
+        <a href="mailto:smartlqapp@gmail.com">smartlqapp@gmail.com</a>
+        <a href="https://sites.google.com/view/smartlqprivacypolicy" target="_blank" rel="noopener">Privacy Policy</a>
+      </div>
+      <div>© 2026 바이탈 VITAL</div>
     </div>
-    <div>© 2026 바이탈 VITAL</div>
   </footer>
 </div>
 
