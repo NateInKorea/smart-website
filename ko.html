@@ -22,7 +22,7 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: #FFFFFF;
+    background: #FAFCFA;
     color: var(--ink);
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.7;
@@ -41,11 +41,15 @@
     padding: 28px 0;
   }
   .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: 'Noto Serif KR', serif;
     font-weight: 700;
     font-size: 22px;
     letter-spacing: -0.01em;
   }
+  .wordmark img { height: 36px; width: auto; }
   .wordmark span { color: var(--green); }
   nav a {
     text-decoration: none;
@@ -62,7 +66,10 @@
     grid-template-columns: 1.1fr 0.9fr;
     gap: 56px;
     align-items: center;
-    padding: 48px 0 88px;
+    padding: 48px 40px 72px;
+    background: linear-gradient(180deg, var(--mint) 0%, rgba(240,250,244,0) 100%);
+    border-radius: 28px;
+    border-top: none;
   }
   .hero h1 {
     font-size: 38px;
@@ -185,7 +192,7 @@
   }
 
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 24px; }
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 32px 24px 48px; }
     .hero h1 { font-size: 30px; max-width: none; }
     .roles-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
     .role { border-left: none !important; padding: 0 !important; }
@@ -198,7 +205,7 @@
 
 <div class="wrap">
   <header>
-    <div class="wordmark">SMART <span>LQ</span></div>
+    <div class="wordmark"><img src="logo-icon.png" alt="SMART LQ">SMART <span>LQ</span></div>
     <nav>
       <a href="#domains">영역</a>
       <a href="#roles">이용 대상</a>
@@ -207,7 +214,7 @@
     </nav>
   </header>
 
-  <section class="hero" style="border-top:none; padding-top:16px;">
+  <section class="hero">
     <div>
       <h1>점수가 아니라, 우리 아이가 어떻게 배우는지 알아보세요.</h1>
       <p class="sub">SMART LQ는 만 7세 이상을 위한 이중언어 학습 진단입니다. 70문항 진단 하나로 7개 연구 기반 영역에 걸친 학습지수(LQ)를 산출하며, 학생·학부모·교사·학교마다 서로 다른 맞춤 안내를 제공합니다.</p>
