@@ -58,7 +58,7 @@
     align-items: center;
     gap: 14px;
   }
-  .wordmark img { height: 52px; width: auto; display: block; }
+  .wordmark img { height: 92px; width: auto; display: block; margin: -20px 0; }
   .wordmark-text {
     font-family: 'Fraunces', serif;
     font-weight: 700;
@@ -206,6 +206,27 @@
   .role h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
   .role p { font-size: 14px; color: var(--grey); }
 
+  /* Features */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 48px;
+  }
+  .feature h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .feature h3 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--feat-color, var(--green)); flex-shrink: 0; }
+  .feature p { color: var(--grey); font-size: 15px; max-width: 48ch; }
+
+  /* Founder note */
+  .founder-note {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .founder-note .mark { font-family: 'Fraunces', serif; font-size: 56px; font-weight: 700; color: var(--green); line-height: 1; }
+  .founder-note p { font-size: 17px; color: var(--ink); max-width: 58ch; line-height: 1.7; }
+  .founder-note p.role-tag { font-size: 14px; color: var(--grey); margin-top: 14px; }
+
   /* How it works */
   .steps { display: flex; flex-direction: column; gap: 0; }
   .step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
@@ -253,7 +274,10 @@
     .roles-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
     .domain-row { grid-template-columns: 1fr; gap: 8px; }
     nav a { margin-left: 16px; font-size: 13px; }
-    .wordmark img { height: 40px; }
+    .wordmark img { height: 60px; margin: -10px 0; }
+    .features-grid { grid-template-columns: 1fr; gap: 28px; }
+    .founder-note { grid-template-columns: 1fr; gap: 12px; }
+    .founder-note .mark { font-size: 40px; }
   }
 </style>
 </head>
@@ -308,7 +332,7 @@
   <section class="page-section" id="domains" style="border-top:none;">
     <div class="section-head">
       <h2>Seven domains, not one score</h2>
-      <p>Every SMART LQ assessment measures the same seven areas of how a person learns — the score is a starting point, not the whole picture.</p>
+      <p>Every SMART LQ assessment measures the same seven areas of how a person learns — the score is a starting point, not the whole picture. Each domain, and every tip built from it, is grounded in established learning-science research rather than invented from scratch.</p>
     </div>
     <div class="domain-list">
       <div class="domain-row"><div class="domain-name"><span class="domain-dot" style="--dot:#5EC18A;"></span>Metacognitive Awareness</div><div class="domain-desc">Whether a student plans ahead, checks their own understanding, and reflects on mistakes rather than just moving past them.</div></div>
@@ -338,6 +362,31 @@
 </section>
 
 <div class="wrap">
+  <section class="page-section">
+    <div class="section-head">
+      <h2>Beyond the score</h2>
+      <p>SMART LQ isn't a one-time test — it's built to keep being useful over time.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature"><h3><span class="dot" style="--feat-color:#5EC18A;"></span>Growth tracking</h3><p>Every retake adds to a running history, so parents and teachers can see whether a domain is actually improving, not just what today's score says.</p></div>
+      <div class="feature"><h3><span class="dot" style="--feat-color:#F0B93A;"></span>Private teacher notes</h3><p>Teachers can log short, domain-tagged observations about a student. Only that teacher and the student's parent ever see them — not other teachers, not the school.</p></div>
+      <div class="feature"><h3><span class="dot" style="--feat-color:#8CEDB2;"></span>Tips you can act on</h3><p>Every tip can be marked as tried, and gentle reminders nudge parents and teachers toward the ones they haven't gotten to yet — not another notification to ignore.</p></div>
+      <div class="feature"><h3><span class="dot" style="--feat-color:#C38E2A;"></span>An honest methodology</h3><p>Each of the 7 domains is grounded in peer-reviewed research. We say plainly what SMART LQ is — and isn't: not a clinical or diagnostic tool.</p></div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="founder-note">
+      <div class="mark">“</div>
+      <div>
+        <p>SMART LQ was built by an education professor with a Master's in Education, alongside a classroom teacher with 15+ years of experience. It's the tool we wished we'd had — one that explains how a student learns, not just how well they scored.</p>
+        <p class="role-tag">The team behind SMART LQ</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
   <section class="page-section" id="how">
     <div class="section-head">
       <h2>How it works</h2>
@@ -345,7 +394,7 @@
     <div class="steps">
       <div class="step"><div class="num">1</div><div><h3>Take the assessment</h3><p>70 questions, written for either Young Learners (ages 7–12) or Older Learners (13+), in English or Korean. Takes about 20 minutes.</p></div></div>
       <div class="step"><div class="num">2</div><div><h3>Get the LQ score</h3><p>A single 300–900 score, plus a full breakdown across all seven domains — not just a number, but where it comes from.</p></div></div>
-      <div class="step"><div class="num">3</div><div><h3>See what to do with it</h3><p>Parents, teachers, and schools each get their own tailored guidance, built from the same underlying result.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3>See what to do with it</h3><p>Parents, teachers, and schools each get their own tailored guidance, drawn from the same research-backed domains — not generic advice, and not a clinical diagnosis.</p></div></div>
     </div>
   </section>
 </div>
