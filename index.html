@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART LQ — Understand how your child learns</title>
+<meta name="description" content="SMART LQ is a bilingual learning assessment that shows students, parents, teachers, and schools how a child learns best — across 7 research-based domains.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #121212;
+    --green: #5EC18A;
+    --yellow: #F9D163;
+    --mint: #F0FAF4;
+    --amber: #C38E2A;
+    --grey: #666666;
+    --line: #E7E7E7;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Fraunces', serif; margin: 0; }
+  a { color: inherit; }
+  img, svg { max-width: 100%; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+  }
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .wordmark span { color: var(--green); }
+  nav a {
+    text-decoration: none;
+    color: var(--grey);
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 28px;
+  }
+  nav a:hover { color: var(--ink); }
+  .lang-switch a { color: var(--ink); font-weight: 600; }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+    padding: 48px 0 88px;
+  }
+  .hero h1 {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    max-width: 15ch;
+  }
+  .hero p.sub {
+    font-size: 17px;
+    color: var(--grey);
+    max-width: 46ch;
+    margin: 22px 0 32px;
+  }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .store-btn:focus-visible, a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+  }
+  .store-btn.secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+
+  /* LQ score card mockup */
+  .lq-card {
+    background: var(--ink);
+    border-radius: 24px;
+    padding: 32px;
+    color: #fff;
+  }
+  .lq-card .label { font-size: 13px; color: #8CEDB2; font-weight: 600; letter-spacing: 0.01em; }
+  .lq-card .score { font-family: 'Fraunces', serif; font-size: 72px; font-weight: 700; color: var(--yellow); margin: 6px 0 4px; }
+  .lq-card .badge {
+    display: inline-block;
+    border: 1.5px solid var(--green);
+    color: var(--green);
+    background: rgba(94,193,138,0.12);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-row .dl { font-size: 11px; color: #9A9A9A; width: 118px; flex-shrink: 0; }
+  .bar-bg { flex: 1; height: 7px; background: #303030; border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; }
+  .bar-row .pct { font-size: 11px; font-weight: 700; width: 32px; text-align: right; }
+
+  /* Domains section */
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  .section-head { max-width: 56ch; margin-bottom: 40px; }
+  .section-head h2 { font-size: 30px; font-weight: 600; letter-spacing: -0.01em; }
+  .section-head p { color: var(--grey); font-size: 16px; margin-top: 12px; }
+
+  .domain-list { display: flex; flex-direction: column; }
+  .domain-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+  .domain-row:last-child { border-bottom: 1px solid var(--line); }
+  .domain-name {
+    border-left: 3px solid var(--dot, var(--green));
+    padding-left: 16px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .domain-desc { color: var(--grey); font-size: 15px; max-width: 62ch; }
+
+  /* Roles */
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .role {
+    padding: 24px 20px 24px 0;
+    border-left: 1px solid var(--line);
+  }
+  .role:first-child { border-left: none; padding-left: 0; }
+  .role:not(:first-child) { padding-left: 24px; }
+  .role h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .role p { font-size: 14px; color: var(--grey); }
+
+  /* How it works */
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid var(--line); }
+  .step:last-child { border-bottom: 1px solid var(--line); }
+  .step .num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; color: var(--green); }
+  .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .step p { color: var(--grey); font-size: 15px; max-width: 60ch; }
+
+  /* Final CTA */
+  .final-cta { text-align: left; }
+  .final-cta h2 { font-size: 32px; font-weight: 600; max-width: 18ch; margin-bottom: 20px; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0 48px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--grey);
+  }
+  footer a { text-decoration: none; color: var(--grey); margin-right: 20px; }
+  footer a:hover { color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 24px; }
+    .hero h1 { font-size: 34px; max-width: none; }
+    .roles-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .role { border-left: none !important; padding: 0 !important; }
+    .domain-row { grid-template-columns: 1fr; gap: 8px; }
+    nav a { margin-left: 16px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="wordmark">SMART <span>LQ</span></div>
+    <nav>
+      <a href="#domains">Domains</a>
+      <a href="#roles">Who it's for</a>
+      <a href="#how">How it works</a>
+      <span class="lang-switch"><a href="ko.html">한국어</a></span>
+    </nav>
+  </header>
+
+  <section class="hero" style="border-top:none; padding-top:16px;">
+    <div>
+      <h1>Understand how your child learns — not just what they scored.</h1>
+      <p class="sub">SMART LQ is a bilingual learning assessment for ages 7 and up. One 70-question assessment produces a Learning Quotient score across 7 research-based domains, with different guidance for the student, their parent, their teacher, and their school.</p>
+      <div class="cta-row">
+        <a class="store-btn" href="#" aria-label="Download on the App Store">Download on the App Store</a>
+        <a class="store-btn secondary" href="#" aria-label="Get it on Google Play">Get it on Google Play</a>
+      </div>
+    </div>
+    <div class="lq-card">
+      <div class="label">My LQ Score</div>
+      <div class="score">685</div>
+      <div class="badge">Strong</div>
+      <div class="bar-row"><span class="dl">Metacognitive</span><div class="bar-bg"><div class="bar-fill" style="width:82%;background:#5EC18A;"></div></div><span class="pct">82%</span></div>
+      <div class="bar-row"><span class="dl">Motivation</span><div class="bar-bg"><div class="bar-fill" style="width:65%;background:#F9D163;"></div></div><span class="pct">65%</span></div>
+      <div class="bar-row"><span class="dl">Processing</span><div class="bar-bg"><div class="bar-fill" style="width:74%;background:#8CEDB2;"></div></div><span class="pct">74%</span></div>
+      <div class="bar-row"><span class="dl">Feedback</span><div class="bar-bg"><div class="bar-fill" style="width:58%;background:#C38E2A;"></div></div><span class="pct">58%</span></div>
+      <div class="bar-row"><span class="dl">Environment</span><div class="bar-bg"><div class="bar-fill" style="width:90%;background:#5EC18A;"></div></div><span class="pct">90%</span></div>
+      <div class="bar-row"><span class="dl">Persistence</span><div class="bar-bg"><div class="bar-fill" style="width:71%;background:#F9D163;"></div></div><span class="pct">71%</span></div>
+      <div class="bar-row"><span class="dl">Language</span><div class="bar-bg"><div class="bar-fill" style="width:60%;background:#8CEDB2;"></div></div><span class="pct">60%</span></div>
+    </div>
+  </section>
+
+  <section id="domains">
+    <div class="section-head">
+      <h2>Seven domains, not one score</h2>
+      <p>Every SMART LQ assessment measures the same seven areas of how a person learns — the score is a starting point, not the whole picture.</p>
+    </div>
+    <div class="domain-list">
+      <div class="domain-row"><div class="domain-name" style="--dot:#5EC18A;">Metacognitive Awareness</div><div class="domain-desc">Whether a student plans ahead, checks their own understanding, and reflects on mistakes rather than just moving past them.</div></div>
+      <div class="domain-row"><div class="domain-name" style="--dot:#F9D163;">Motivation Orientation</div><div class="domain-desc">What actually drives a student to keep going — curiosity, personal growth, rewards, or recognition from others.</div></div>
+      <div class="domain-row"><div class="domain-name" style="--dot:#8CEDB2;">Processing Preference</div><div class="domain-desc">How a student takes in new material best — through images, hearing it explained, hands-on trial, or careful reading.</div></div>
+      <div class="domain-row"><div class="domain-name" style="--dot:#C38E2A;">Feedback Responsiveness</div><div class="domain-desc">How a student reacts to correction — as fuel for improvement, or as something to brace against.</div></div>
+      <div class="domain-row"><div class="domain-name" style="--dot:#5EC18A;">Learning Environment Needs</div><div class="domain-desc">The conditions a student actually needs to concentrate — quiet versus noise, routine versus flexibility, alone versus with others.</div></div>
+      <div class="domain-row"><div class="domain-name" style="--dot:#F9D163;">Persistence Beliefs</div><div class="domain-desc">Whether a student treats difficulty as a sign to try a different approach, or a sign to stop.</div></div>
+      <div class="domain-row"><div class="domain-name" style="--dot:#8CEDB2;">Language Learning Style</div><div class="domain-desc">How comfortably a student takes risks, notices patterns, and builds real communication in a second language.</div></div>
+    </div>
+  </section>
+
+  <section id="roles">
+    <div class="section-head">
+      <h2>The same score, four different views</h2>
+      <p>SMART LQ doesn't just report a number — it tells each person in a student's life what to actually do with it.</p>
+    </div>
+    <div class="roles-grid">
+      <div class="role"><h3>Student</h3><p>How you learn best, explained in your own terms.</p></div>
+      <div class="role"><h3>Parent</h3><p>Specific ways to help your child at home.</p></div>
+      <div class="role"><h3>Teacher</h3><p>How to teach this particular student well.</p></div>
+      <div class="role"><h3>School</h3><p>Patterns across a class, without naming names.</p></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="section-head">
+      <h2>How it works</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><h3>Take the assessment</h3><p>70 questions, written for either Young Learners (ages 7–12) or Older Learners (13+), in English or Korean. Takes about 20 minutes.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3>Get the LQ score</h3><p>A single 300–900 score, plus a full breakdown across all seven domains — not just a number, but where it comes from.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3>See what to do with it</h3><p>Parents, teachers, and schools each get their own tailored guidance, built from the same underlying result.</p></div></div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>See how your student actually learns.</h2>
+    <div class="cta-row">
+      <a class="store-btn" href="#" aria-label="Download on the App Store">Download on the App Store</a>
+      <a class="store-btn secondary" href="#" aria-label="Get it on Google Play">Get it on Google Play</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <a href="mailto:smartlqapp@gmail.com">smartlqapp@gmail.com</a>
+      <a href="https://sites.google.com/view/smartlqprivacypolicy" target="_blank" rel="noopener">Privacy Policy</a>
+    </div>
+    <div>© 2026 바이탈 VITAL</div>
+  </footer>
+</div>
+
+</body>
+</html>
