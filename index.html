@@ -113,10 +113,11 @@
 
   /* Section 4: domains with question framing */
   .domain-list { display: flex; flex-direction: column; }
-  .domain-row { display: grid; grid-template-columns: 76px 210px 1fr; gap: 20px; align-items: start; padding: 24px 18px; margin: 0 -18px; border-top: 1px solid var(--line); border-radius: 12px; transition: background 0.15s ease; }
+  .domain-row { display: grid; grid-template-columns: 110px 210px 1fr; gap: 20px; align-items: start; padding: 24px 18px; margin: 0 -18px; border-top: 1px solid var(--line); border-radius: 12px; transition: background 0.15s ease; }
   .domain-row:hover { background: var(--mint); }
   .domain-row:last-child { border-bottom: 1px solid var(--line); }
   .domain-icon { width: 76px; height: 76px; object-fit: contain; }
+  .domain-icon-wide { width: 100%; height: auto; object-fit: contain; }
   .domain-name { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 16px; padding-top: 6px; }
   .domain-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--dot, var(--green)); flex-shrink: 0; }
 
@@ -318,7 +319,7 @@
         </div>
       </div>
       <div class="domain-row">
-        <img class="domain-icon" src="icon-processing-en.png" alt="">
+        <img class="domain-icon-wide" src="icon-processing-en.png" alt="">
         <div class="domain-name"><span class="domain-dot" style="--dot:#8CEDB2;"></span>③ Processing Preference</div>
         <div>
           <div class="domain-question">"How do I understand new things best?"</div>
