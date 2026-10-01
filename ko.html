@@ -104,7 +104,9 @@
   .stat .num { font-family: 'Noto Serif KR', serif; font-size: 34px; font-weight: 700; }
   .stat .lbl { font-size: 13px; color: var(--grey); margin-top: 4px; line-height: 1.5; }
 
-  /* Section 3: quotes -> pivot */
+  /* Section 3: quotes -> pivot, with image alongside */
+  .section3-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+  .section3-image { width: 100%; border-radius: 20px; display: block; }
   .quote-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
   .quote-line { font-size: 17px; color: var(--grey); font-style: italic; border-left: 3px solid var(--line); padding-left: 16px; }
   .pivot-block { max-width: 52ch; }
@@ -114,11 +116,17 @@
 
   /* Section 4: domains with question framing */
   .domain-list { display: flex; flex-direction: column; }
-  .domain-row { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 24px 18px; margin: 0 -18px; border-top: 1px solid var(--line); border-radius: 12px; transition: background 0.15s ease; }
+  .domain-row { display: grid; grid-template-columns: 56px 190px 1fr; gap: 20px; align-items: start; padding: 24px 18px; margin: 0 -18px; border-top: 1px solid var(--line); border-radius: 12px; transition: background 0.15s ease; }
   .domain-row:hover { background: var(--mint); }
   .domain-row:last-child { border-bottom: 1px solid var(--line); }
-  .domain-name { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 16px; }
+  .domain-icon { width: 56px; height: 56px; object-fit: contain; }
+  .domain-name { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 16px; padding-top: 6px; }
   .domain-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--dot, var(--green)); flex-shrink: 0; }
+
+  /* Section banner images (3 and 6) */
+  .section-banner-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+  .section-banner-img { width: 100%; border-radius: 20px; display: block; }
+  .section6-banner { width: 100%; max-width: 760px; border-radius: 20px; display: block; margin: 0 auto 40px; }
   .domain-question { font-style: italic; color: var(--ink); font-size: 15px; margin: 8px 0 6px; }
   .domain-desc { color: var(--grey); font-size: 14px; max-width: 60ch; line-height: 1.7; }
 
@@ -188,7 +196,11 @@
     nav { flex-wrap: wrap; row-gap: 10px; width: 100%; justify-content: flex-start; }
     nav a { margin-left: 0; margin-right: 18px; font-size: 13px; }
     .stats-band { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
-    .domain-row { grid-template-columns: 1fr; gap: 6px; }
+    .section-banner-grid { grid-template-columns: 1fr; gap: 28px; }
+    .domain-row { grid-template-columns: 44px 1fr; gap: 14px; }
+    .domain-row .domain-name { grid-column: 2; }
+    .domain-row > div:last-child { grid-column: 1 / -1; }
+    .domain-icon { width: 40px; height: 40px; }
     .roles-grid { grid-template-columns: 1fr; gap: 14px; }
     .sample-card { padding: 24px; }
     .scale-btn { min-width: 70px; padding: 12px 6px; }
@@ -262,19 +274,24 @@
 <!-- 03. Same score, different reasons -->
 <div class="wrap">
   <section class="page-section" style="border-top:none;">
-    <div class="section-head">
-      <h2>같은 점수라도, 공부가 어려운 이유는 다를 수 있습니다.</h2>
-    </div>
-    <div class="quote-stack">
-      <div class="quote-line">"집중력이 부족한 것 같아요."</div>
-      <div class="quote-line">"조금만 더 노력하면 될 텐데요."</div>
-      <div class="quote-line">"공부 방법을 아직 모르는 것 같아요."</div>
-    </div>
-    <div class="pivot-block">
-      <p>하지만 겉으로 보이는 모습만으로는 그 이유를 알기 어렵습니다.</p>
-      <p>계획을 세우는 방법을 모르는 것일 수도 있고, 지금의 공부 방식이 아이에게 맞지 않을 수도 있습니다. 실패에 쉽게 자신감을 잃는 아이도 있고, 주변 환경에 따라 집중력이 크게 달라지는 아이도 있습니다.</p>
-      <div class="pivot-question">"이 아이는 어떻게 배우고 있을까?"</div>
-      <p class="pivot-final">아이를 판단하기 전에, 아이의 학습을 먼저 이해합니다.</p>
+    <div class="section-banner-grid">
+      <div>
+        <div class="section-head">
+          <h2>같은 점수라도, 공부가 어려운 이유는 다를 수 있습니다.</h2>
+        </div>
+        <div class="quote-stack">
+          <div class="quote-line">"집중력이 부족한 것 같아요."</div>
+          <div class="quote-line">"조금만 더 노력하면 될 텐데요."</div>
+          <div class="quote-line">"공부 방법을 아직 모르는 것 같아요."</div>
+        </div>
+        <div class="pivot-block">
+          <p>하지만 겉으로 보이는 모습만으로는 그 이유를 알기 어렵습니다.</p>
+          <p>계획을 세우는 방법을 모르는 것일 수도 있고, 지금의 공부 방식이 아이에게 맞지 않을 수도 있습니다. 실패에 쉽게 자신감을 잃는 아이도 있고, 주변 환경에 따라 집중력이 크게 달라지는 아이도 있습니다.</p>
+          <div class="pivot-question">"이 아이는 어떻게 배우고 있을까?"</div>
+          <p class="pivot-final">아이를 판단하기 전에, 아이의 학습을 먼저 이해합니다.</p>
+        </div>
+      </div>
+      <img class="section-banner-img" src="section3-ko.png" alt="다양한 학습 장면: 책 읽기, 발표 자료 보기, 듣기, 로봇 조립, 친구와 대화하기, 혼자 공부하기">
     </div>
   </section>
 </div>
@@ -288,6 +305,7 @@
     </div>
     <div class="domain-list">
       <div class="domain-row">
+        <img class="domain-icon" src="icon-metacognitive.png" alt="">
         <div class="domain-name"><span class="domain-dot" style="--dot:#5EC18A;"></span>① 메타인지 인식</div>
         <div>
           <div class="domain-question">"나는 내가 어떻게 공부하는지 알고 있을까?"</div>
@@ -295,6 +313,7 @@
         </div>
       </div>
       <div class="domain-row">
+        <img class="domain-icon" src="icon-motivation.png" alt="">
         <div class="domain-name"><span class="domain-dot" style="--dot:#F0B93A;"></span>② 학습 동기</div>
         <div>
           <div class="domain-question">"무엇이 나를 공부하게 만들까?"</div>
@@ -302,6 +321,7 @@
         </div>
       </div>
       <div class="domain-row">
+        <img class="domain-icon" src="icon-processing-ko.png" alt="">
         <div class="domain-name"><span class="domain-dot" style="--dot:#8CEDB2;"></span>③ 정보 처리 방식</div>
         <div>
           <div class="domain-question">"나는 어떤 방식으로 배울 때 잘 이해할까?"</div>
@@ -309,6 +329,7 @@
         </div>
       </div>
       <div class="domain-row">
+        <img class="domain-icon" src="icon-feedback.png" alt="">
         <div class="domain-name"><span class="domain-dot" style="--dot:#C38E2A;"></span>④ 피드백 수용</div>
         <div>
           <div class="domain-question">"틀렸다는 말을 들었을 때 나는 어떻게 반응할까?"</div>
@@ -316,6 +337,7 @@
         </div>
       </div>
       <div class="domain-row">
+        <img class="domain-icon" src="icon-environment.png" alt="">
         <div class="domain-name"><span class="domain-dot" style="--dot:#5EC18A;"></span>⑤ 학습 환경 선호</div>
         <div>
           <div class="domain-question">"나는 어떤 환경에서 가장 잘 집중할까?"</div>
@@ -323,6 +345,7 @@
         </div>
       </div>
       <div class="domain-row">
+        <img class="domain-icon" src="icon-persistence.png" alt="">
         <div class="domain-name"><span class="domain-dot" style="--dot:#F9D163;"></span>⑥ 끈기와 성장 믿음</div>
         <div>
           <div class="domain-question">"어려워도 다시 해볼 수 있을까?"</div>
@@ -330,6 +353,7 @@
         </div>
       </div>
       <div class="domain-row">
+        <img class="domain-icon" src="icon-language.png" alt="">
         <div class="domain-name"><span class="domain-dot" style="--dot:#8CEDB2;"></span>⑦ 언어 학습</div>
         <div>
           <div class="domain-question">"나는 새로운 언어를 어떻게 배우고 사용할까?"</div>
@@ -370,6 +394,7 @@
       <h2>한 번의 진단, 네 가지 시선</h2>
       <p>같은 결과를 보더라도 학생에게 필요한 정보와 학부모에게 필요한 정보는 다릅니다. SMART LQ는 하나의 결과를 학생·학부모·교사·학교의 관점에서 다르게 보여줍니다.</p>
     </div>
+    <img class="section6-banner" src="section6-ko.png" alt="학생, 학부모, 교사, 학교 각자의 화면 예시">
     <div class="roles-grid">
       <div class="role" style="--role-color:#5EC18A;">
         <h3>학생</h3>
