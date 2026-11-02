@@ -71,9 +71,10 @@
   .hero .lede { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.9; margin-bottom: 28px; }
   .hero .lede p { margin: 0 0 14px; }
   .hero .lede strong { color: #fff; font-weight: 700; }
-  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-  .store-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(100deg, var(--green), var(--gold)); color: #10150F; text-decoration: none; padding: 13px 22px; border-radius: 10px; font-size: 14px; font-weight: 700; }
-  .store-btn.secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.28); }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .badge-link { display: inline-block; line-height: 0; transition: transform 0.15s ease, opacity 0.15s ease; }
+  .badge-link:hover { transform: translateY(-2px); opacity: 0.9; }
+  .badge-link img { height: 52px; width: auto; display: block; }
   .price-line { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 18px; }
 
   /* Phone mockup */
@@ -207,6 +208,7 @@
     .scale-btn { min-width: 70px; padding: 12px 6px; }
     .final-cta { grid-template-columns: 1fr; gap: 32px; }
     .final-cta .graphic { height: 160px; }
+    .badge-link img { height: 46px; }
   }
 </style>
 </head>
@@ -237,8 +239,8 @@
           <p>SMART LQ는 연령에 맞는 질문을 통해 학습자의 7가지 학습 영역을 살펴보고, "이 아이는 어떻게 배울 때 가장 잘 배우는가?" 그 답을 찾아가는 학습 진단입니다.</p>
         </div>
         <div class="cta-row">
-          <a class="store-btn" href="#" aria-label="App Store에서 다운로드">App Store에서 다운로드</a>
-          <a class="store-btn secondary" href="#" aria-label="Google Play에서 다운로드">Google Play에서 다운로드</a>
+          <a class="badge-link" href="https://apps.apple.com/app/id6824687369" target="_blank" rel="noopener"><img src="apple-badge-ko.svg" alt="App Store에서 다운로드"></a>
+          <a class="badge-link" href="https://play.google.com/store/apps/details?id=com.smartlq.app" target="_blank" rel="noopener"><img src="google-badge-ko.svg" alt="Google Play에서 다운로드"></a>
         </div>
       </div>
       <div class="phone-frame">
@@ -518,8 +520,8 @@
           지금, 우리 아이의 학습 프로필을 확인해 보세요.
         </p>
         <div class="cta-row">
-          <a class="store-btn" href="#" aria-label="App Store에서 다운로드">App Store에서 다운로드</a>
-          <a class="store-btn secondary" href="#" aria-label="Google Play에서 다운로드">Google Play에서 다운로드</a>
+          <a class="badge-link" href="https://apps.apple.com/app/id6824687369" target="_blank" rel="noopener"><img src="apple-badge-ko.svg" alt="App Store에서 다운로드"></a>
+          <a class="badge-link" href="https://play.google.com/store/apps/details?id=com.smartlq.app" target="_blank" rel="noopener"><img src="google-badge-ko.svg" alt="Google Play에서 다운로드"></a>
         </div>
       </div>
       <div class="graphic">
@@ -532,6 +534,7 @@
       <div>
         <a href="mailto:smartlqapp@gmail.com">smartlqapp@gmail.com</a>
         <a href="https://sites.google.com/view/smartlqprivacypolicy" target="_blank" rel="noopener">개인정보처리방침</a>
+        <a href="https://sites.google.com/view/smartlqterms" target="_blank" rel="noopener">이용약관</a>
       </div>
       <div>© 2026 SMART LQ</div>
     </div>
