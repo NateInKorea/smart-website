@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART LQ</title>
+<style>
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; background: #FFFFFF; color: #121212; }
+  .wrap { max-width: 420px; margin: 0 auto; padding: 60px 24px; text-align: center; }
+  .icon { font-size: 56px; margin-bottom: 16px; }
+  h1 { font-size: 22px; margin: 0 0 10px; }
+  p { font-size: 15px; color: #555555; line-height: 1.6; margin: 0 0 6px; }
+  .en { color: #888888; font-size: 14px; margin-top: 14px; }
+  .card { background: #F8F8F8; border: 1.5px solid #EEEEEE; border-radius: 18px; padding: 24px; margin-top: 24px; text-align: left; }
+  label { display: block; font-size: 13px; font-weight: 700; color: #444444; margin: 12px 0 6px; }
+  input { width: 100%; box-sizing: border-box; padding: 13px 14px; font-size: 15px; border: 1.5px solid #EEEEEE; border-radius: 12px; background: #FFFFFF; }
+  button { width: 100%; margin-top: 18px; padding: 15px; font-size: 16px; font-weight: 800; color: #FFFFFF; background: #5EC18A; border: none; border-radius: 14px; cursor: pointer; }
+  button:disabled { opacity: 0.6; }
+  .error { color: #CC0000; font-size: 13px; margin-top: 12px; min-height: 18px; }
+  .hidden { display: none; }
+  .brand { font-size: 12px; color: #CCCCCC; margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div id="confirmed">
+    <div class="icon">✅</div>
+    <h1>이메일 인증이 완료되었어요!</h1>
+    <p>SMART LQ 앱으로 돌아가 로그인해 주세요.</p>
+    <p class="en">Your email is confirmed! Go back to the SMART LQ app and log in.</p>
+  </div>
+
+  <div id="reset" class="hidden">
+    <div class="icon">🔑</div>
+    <h1>새 비밀번호 설정</h1>
+    <p class="en">Set a new password</p>
+    <div class="card">
+      <label for="pw1">새 비밀번호 / New password</label>
+      <input id="pw1" type="password" autocomplete="new-password">
+      <label for="pw2">비밀번호 확인 / Confirm password</label>
+      <input id="pw2" type="password" autocomplete="new-password">
+      <div id="resetError" class="error"></div>
+      <button id="saveBtn">비밀번호 변경 / Save</button>
+    </div>
+  </div>
+
+  <div id="resetDone" class="hidden">
+    <div class="icon">🎉</div>
+    <h1>비밀번호가 변경되었어요!</h1>
+    <p>SMART LQ 앱으로 돌아가 새 비밀번호로 로그인해 주세요.</p>
+    <p class="en">Your password has been changed. Go back to the SMART LQ app and log in with your new password.</p>
+  </div>
+
+  <div id="expired" class="hidden">
+    <div class="icon">⏰</div>
+    <h1>링크가 만료되었어요</h1>
+    <p>이 링크는 이미 사용되었거나 만료되었어요. 앱에서 다시 요청해 주세요.</p>
+    <p class="en">This link has expired or was already used. Please request a new one from the app.</p>
+  </div>
+
+  <div class="brand">SMART LQ · Powered by LQ — Learning Quotient™</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://ejjlgyaftouigxezjtdk.supabase.co'
+  const SUPABASE_KEY = 'PASTE_PUBLISHABLE_KEY_HERE'
+
+  const hash = new URLSearchParams(window.location.hash.slice(1))
+  const query = new URLSearchParams(window.location.search)
+  const type = hash.get('type') || query.get('type')
+  const hasError = hash.get('error') || query.get('error')
+
+  const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+
+  const show = (id) => {
+    ['confirmed', 'reset', 'resetDone', 'expired'].forEach((s) => {
+      document.getElementById(s).classList.toggle('hidden', s !== id)
+    })
+  }
+
+  if (hasError) {
+    show('expired')
+  } else if (type === 'recovery') {
+    show('reset')
+  } else {
+    show('confirmed')
+  }
+
+  document.getElementById('saveBtn').addEventListener('click', async () => {
+    const pw1 = document.getElementById('pw1').value
+    const pw2 = document.getElementById('pw2').value
+    const errorBox = document.getElementById('resetError')
+    const btn = document.getElementById('saveBtn')
+    errorBox.textContent = ''
+
+    if (pw1.length < 6) {
+      errorBox.textContent = '비밀번호는 6자 이상이어야 해요. / Password must be at least 6 characters.'
+      return
+    }
+    if (pw1 !== pw2) {
+      errorBox.textContent = '비밀번호가 서로 달라요. / Passwords do not match.'
+      return
+    }
+
+    btn.disabled = true
+    const { data: { session } } = await client.auth.getSession()
+    if (!session) {
+      show('expired')
+      return
+    }
+
+    const { error } = await client.auth.updateUser({ password: pw1 })
+    if (error) {
+      errorBox.textContent = '변경하지 못했어요. 다시 시도해 주세요. / Could not change password. Please try again.'
+      btn.disabled = false
+      return
+    }
+
+    await client.auth.signOut()
+    show('resetDone')
+  })
+</script>
+</body>
+</html>
