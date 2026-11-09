@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["VADCFG27N6.com.smartlq.app"],
+        "components": [{ "/": "/join*" }],
+        "appID": "VADCFG27N6.com.smartlq.app",
+        "paths": ["/join*"]
+      }
+    ]
+  }
+}
