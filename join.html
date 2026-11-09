@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART LQ 참여하기</title>
+<meta property="og:title" content="SMART LQ 수업 참여하기 / Join on SMART LQ">
+<meta property="og:description" content="코드를 눌러 SMART LQ에 참여하세요. / Tap to join on SMART LQ.">
+<style>
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; background: #FFFFFF; color: #121212; }
+  .wrap { max-width: 440px; margin: 0 auto; padding: 48px 24px; text-align: center; }
+  .icon { font-size: 52px; margin-bottom: 12px; }
+  h1 { font-size: 22px; margin: 0 0 6px; }
+  .en { color: #888888; font-size: 14px; margin: 0 0 20px; }
+  .codeBox { background: #F0FAF4; border: 2px solid #5EC18A; border-radius: 18px; padding: 20px; margin: 20px 0; }
+  .codeLabel { font-size: 13px; font-weight: 700; color: #5EC18A; margin-bottom: 8px; }
+  .code { font-size: 38px; font-weight: 900; letter-spacing: 6px; color: #121212; }
+  .copyBtn { margin-top: 14px; padding: 10px 18px; font-size: 14px; font-weight: 700; color: #2E7D52; background: #FFFFFF; border: 1.5px solid #5EC18A; border-radius: 12px; cursor: pointer; }
+  .openBtn { display: block; margin: 0 0 24px; padding: 15px; font-size: 16px; font-weight: 800; color: #FFFFFF; background: #121212; border-radius: 14px; text-decoration: none; }
+  .badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
+  .badges img { height: 48px; }
+  .steps { background: #F8F8F8; border: 1.5px solid #EEEEEE; border-radius: 18px; padding: 18px 20px; text-align: left; }
+  .steps h2 { font-size: 15px; margin: 0 0 10px; }
+  .steps ol { margin: 0; padding-left: 20px; }
+  .steps li { font-size: 14px; color: #444444; line-height: 1.6; margin-bottom: 6px; }
+  .steps .enStep { color: #888888; font-size: 12px; display: block; }
+  .brand { font-size: 12px; color: #CCCCCC; margin-top: 36px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="icon">🎓</div>
+  <h1 id="title">SMART LQ 수업 참여하기</h1>
+  <p class="en" id="titleEn">Join a class on SMART LQ</p>
+
+  <div class="codeBox">
+    <div class="codeLabel" id="codeLabel">수업 코드 / Class Code</div>
+    <div class="code" id="code">------</div>
+    <button class="copyBtn" id="copyBtn">코드 복사 / Copy code</button>
+  </div>
+
+  <a class="openBtn" id="openBtn" href="#">SMART LQ 앱에서 열기 / Open in the app</a>
+
+  <div class="badges">
+    <a href="https://apps.apple.com/app/id6824687369"><img src="apple-badge-ko.svg" alt="App Store에서 다운로드"></a>
+    <a href="https://play.google.com/store/apps/details?id=com.smartlq.app"><img src="google-badge-ko.svg" alt="Google Play에서 다운로드"></a>
+  </div>
+
+  <div class="steps">
+    <h2 id="stepsTitle">참여 방법 / How to join</h2>
+    <ol id="stepsList"></ol>
+  </div>
+
+  <div class="brand">SMART LQ · Powered by LQ — Learning Quotient™</div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search)
+  const code = (params.get('code') || '').toUpperCase().replace(/[^A-Z0-9]/g, '')
+  const type = params.get('type') === 'school' ? 'school' : 'class'
+
+  document.getElementById('code').textContent = code || '------'
+
+  const steps = type === 'school'
+    ? [
+        ['위 버튼으로 SMART LQ 앱을 설치하세요.', 'Install SMART LQ using the buttons above.'],
+        ['회원가입 시 역할을 "교사"로 선택하세요.', 'When signing up, choose "Teacher" as your role.'],
+        ['대시보드에서 "학교 참여"를 누르세요.', 'On your dashboard, tap "Join School."'],
+        ['위의 학교 코드를 입력하세요.', 'Enter the school code above.'],
+      ]
+    : [
+        ['위 버튼으로 SMART LQ 앱을 설치하세요.', 'Install SMART LQ using the buttons above.'],
+        ['학부모로 회원가입 후 자녀를 추가하세요.', 'Sign up as a parent and add your child.'],
+        ['자녀 프로필에서 "수업 참여하기"를 누르세요.', 'On your child\'s profile, tap "Join a Class."'],
+        ['위의 수업 코드를 입력하세요.', 'Enter the class code above.'],
+      ]
+
+  if (type === 'school') {
+    document.getElementById('title').textContent = 'SMART LQ 학교 참여하기'
+    document.getElementById('titleEn').textContent = 'Join a school on SMART LQ'
+    document.getElementById('codeLabel').textContent = '학교 코드 / School Code'
+  }
+
+  document.getElementById('stepsList').innerHTML = steps
+    .map(([ko, en]) => `<li>${ko}<span class="enStep">${en}</span></li>`)
+    .join('')
+
+  const appLink = `smartapp://join?type=${type}&code=${code}`
+  const isAndroid = /android/i.test(navigator.userAgent)
+  document.getElementById('openBtn').href = isAndroid
+    ? `intent://join?type=${type}&code=${code}#Intent;scheme=smartapp;package=com.smartlq.app;end`
+    : appLink
+  if (!code) document.getElementById('openBtn').style.display = 'none'
+
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(code)
+      document.getElementById('copyBtn').textContent = '복사됨! / Copied!'
+    } catch (e) {
+      document.getElementById('copyBtn').textContent = code
+    }
+  })
+</script>
+</body>
+</html>
