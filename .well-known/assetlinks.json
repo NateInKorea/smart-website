@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.smartlq.app",
+      "sha256_cert_fingerprints": [
+        "D6:83:4C:88:6A:9A:99:34:9E:C2:E2:BB:87:C1:FD:92:4A:0A:EF:8C:17:A0:41:08:05:CE:05:1C:62:EE:1A:82",
+        "90:23:27:B2:E6:08:1A:0D:38:60:E1:C8:3A:2A:12:7A:08:0D:D0:CD:CA:5B:A8:D2:61:97:CE:2C:3A:E8:BF:6D"
+      ]
+    }
+  }
+]
